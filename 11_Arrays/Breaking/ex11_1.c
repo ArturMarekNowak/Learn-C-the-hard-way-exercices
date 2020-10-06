@@ -25,13 +25,14 @@ int main (int argc, char *argv[])
 	number[1] = 2;
 	number[2] = 3;
 	number[3] = 4;
-
+	
+	//Third task: initialize too many elements with no place for '\0'
 	name[0] = 'A';
 	name[1] = 'r';
 	name[2] = 't';
 	name[3] = 'u';
 	name[4] = 'r';
-	name[5] = '\0';
+	name[5] = 'X';
 	
 	//After initialization
 	printf("Numbers: %d %d %d %d\n", number[0], number[1], number[2], number[3]);
