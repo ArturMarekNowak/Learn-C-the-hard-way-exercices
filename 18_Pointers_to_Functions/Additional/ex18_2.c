@@ -84,6 +84,15 @@ void test_sorting(int *numbers, int count, compare_cb cmp)
 	printf("\n");
 
 	free(sorted);
+
+	unsigned char *data = (unsigned char *)cmp;
+
+	for (i = 0; i < 25; i++) {
+		printf("%02x:", data[i]);
+	}
+
+	printf("\n");
+
 }
 
 int main(int argc, char *argv[])
@@ -93,17 +102,17 @@ int main(int argc, char *argv[])
 	int count = argc - 1;
 	int i = 0;
 	char **inputs = argv + 1;
-	printf("**inputs: %p", **inputs);
+	
 	int *numbers = malloc(count * sizeof(int));
 	if(!numbers) die("Memory error.");
 
 	for (i = 0; i < count; i++) {
 		numbers[i] = atoi(inputs[i]);
 	}
-
-	test_sorting(numbers, count, sorted_order);
-	test_sorting(numbers, count, reverse_order);
-	test_sorting(numbers, count, strange_order);
+	//Pass bad values 
+	//test_sorting(numbers, count, 0xFFFFFFF);
+	//test_sorting(numbers, count, 0xABCDEF123);
+	test_sorting(numbers, count, NULL);
 
 	free(numbers);
 
