@@ -30,10 +30,10 @@ TEST_SRC=$(wildcard $(TESTS_DIR)/*_tests/c)
 TESTS=$(patsubst %.c,%,$(TEST_SRC))
 
 
-#We say that the ultimate target is build/libYOUR_LIBRARY.a
+We say that the ultimate target is build/libYOUR_LIBRARY.a
 #Must be changed accordingly to used library
 S_TARGET=$(BUILD_DIR)/libex29.a
-D_TARGET=$(patsubst %.a,%.so,$(S_TARGET))
+D_TARGET=$(patsubst %.c,%.so,$(S_TARGET))
 
 
 
@@ -59,7 +59,7 @@ dev: all
 $(S_TARGET): CFLAGS += -fPIC
 
 #Real target - make the build directory and then compile all of the OBJECTS
-$(S_TARGET): build $(OBJECTS)
+$(S_TARGET): build $(OBCJECTS)
 	ar rcs $@ $(OBJECTS)    #ar - creation of TARGET, $@ $(OBJECTS) <==> put the target for this Makefile source here and all the OBJECTS after that
 	ranlib $@		#ranlibe on TARGET ==> it's built!
 
