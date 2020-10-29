@@ -2,7 +2,7 @@
 #include <dlfcn.h>
 
 typedef int (*lib_function) (const char *data);
-char *lib_file = "build/libYOUR_LIBRARY.so";
+char *lib_file = "build/libex30.so";
 void *lib = NULL;
 
 int check_function(const char *func_to_run, const char *data, int expected)
@@ -21,7 +21,7 @@ error:
 char *test_dlopen()
 {
 	lib = dlopen(lib_file, RTLD_NOW);
-	mu_assert(lib != NULL, "Faile to open the library to test.");
+	mu_assert(lib != NULL, "Failed to open the library to test.");
 	return NULL;
 }
 
@@ -36,7 +36,7 @@ char *test_functions()
 
 char *test_failures()
 {
-	mu_assert(check_function("fail_on_purpose", "Hello", 0), "fail_on_purpose failed.");
+	mu_assert(check_function("fail_on_purpose", "Hello", 1), "fail_on_purpose failed.");
 
 	return NULL;
 }
